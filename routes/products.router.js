@@ -35,11 +35,29 @@ router.get('/:id', function(req, res) {
 
 router.post('/', function(req, res) {
   const body = req.body;
-  res.json({
+  res.status(201).json({
     message: "created",
     data: body
   })
 });
 
+router.patch('/:id', function(req, res) {
+  const { id } = req.params;
+  const body = req.body;
+  res.json({
+    message: 'updated',
+    data: body,
+    id
+  })
+});
+
+
+router.delete('/:id', function(req, res) {
+  const { id } = req.params;
+  res.json({
+    message: 'deleted',
+    id
+  })
+});
 
 module.exports = router;
